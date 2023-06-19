@@ -2,8 +2,8 @@ require 'date'
 
 class Bank
   def initialize(initial_deposit, date)
-    @initial_deposit = format('%.2f', initial_deposit)
-    @date = date.gsub('-', '/')
+    @initial_deposit = to_two_decimal_places(initial_deposit)
+    @date = date_formater(date)
     @dates = {}
     @balance = 0.00
     @balance += initial_deposit
@@ -11,15 +11,23 @@ class Bank
 
   def to_two_decimal_places(number)
     format('%.2f', number)
+  end
+
+  def date_formater(date)
+    date.gsub('-', '/')
   end 
 
   def add(deposit, date)
     @balance += deposit
-    date = date.gsub('-', '/')
-    @dates[date] = {deposit => @balance}
+    @dates[date_formater(date)] = {deposit => @balance}
     @dates = @dates.sort_by { |day, _| DateTime.parse(day, '%d/%m/%Y') }.reverse.to_h
-    @dates
   end
+
+  def withdraw(amount, date)
+    @balance -= amount
+    @dates[date_formater(date)] = {amount => @balance}
+    @dates = @dates.sort_by { |day, _| DateTime.parse(day, '%d/%m/%Y') }.reverse.to_h
+  end 
 
   def statement
     account = "date || credit || debit || balance\n"
