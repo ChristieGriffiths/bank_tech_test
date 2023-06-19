@@ -9,4 +9,9 @@ describe Bank do
     client = Bank.new(1000, '14-01-2023')
     expect(client.statement).to eq("date || credit || debit || balance\n14/01/2023 || 1000.00 || || 1000.00")
   end 
+  it 'allows a client to make 2 deposit and print a statement' do
+    client = Bank.new(1000, '14-01-2023')
+    client.add(1000, '15-01-2023')
+    expect(client.statement).to eq("date || credit || debit || balance\n15/01/2023 || 1000.00 || || 2000.00\n14/01/2023 || 1000.00 || || 1000.00")
+  end 
 end
