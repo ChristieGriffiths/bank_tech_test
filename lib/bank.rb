@@ -1,10 +1,10 @@
 class Bank
   def initialize(amount, date)
-    @amount = amount
-    @date = date
+    @amount = format('%.2f', amount)
+    @date = date.gsub('-', '/')
   end
 
   def statement
-    'date || credit || debit || balance\n10/01/2023 || 2000.00 || || 2000.00'
+    "date || credit || debit || balance\n#{@date} || #{@amount} || || #{@amount}"
   end 
 end
