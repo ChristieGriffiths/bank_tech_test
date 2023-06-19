@@ -2,11 +2,9 @@ require 'date'
 
 class Bank
   def initialize(initial_deposit, date)
-    @initial_deposit = to_two_decimal_places(initial_deposit)
-    @date = date_formater(date)
     @dates = {}
     @balance = 0.00
-    @balance += initial_deposit
+    add(initial_deposit, date)
   end
 
   def to_two_decimal_places(number)
@@ -36,7 +34,6 @@ class Bank
       balance = data.values.first
       account += "#{date} || #{to_two_decimal_places(deposit)} || || #{to_two_decimal_places(balance)}\n"
     end
-    account += "#{@date} || #{@initial_deposit} || || #{@initial_deposit}"
     account
   end
 end
