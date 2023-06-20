@@ -45,6 +45,10 @@ describe Bank do
   end
   it 'only allows client to input a positive integer when making a deposit an account' do
     client = Bank.new(2000, '10-01-2023')
-    expect { -1000 }.to raise_error(RuntimeError)
+    expect { client.add(-1000, '10-01-2023') }.to raise_error(RuntimeError)
+  end
+  it 'only allows client to input a positive integer when making a withdrawl from an account' do
+    client = Bank.new(2000, '10-01-2023')
+    expect { client.withdraw(-1000, '10-01-2023') }.to raise_error(RuntimeError)
   end
 end

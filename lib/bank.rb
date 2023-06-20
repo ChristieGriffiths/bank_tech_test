@@ -21,11 +21,13 @@ class Bank
   end 
 
   def add(deposit, date)
+    deposit_checker(deposit)
     @balance += deposit
     @dates[date_formater(date)] = {deposit => @balance}
   end
 
   def withdraw(amount, date)
+    deposit_checker(amount)
     @balance -= amount
     @dates[date_formater(date)] = {-amount => @balance}
   end 
