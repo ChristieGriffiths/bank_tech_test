@@ -37,4 +37,14 @@ describe Bank do
     client.withdraw(3000, '11-01-2023')
     expect(client.statement).to eq("date || credit || debit || balance\n11/01/2023 || || 3000.00 || -1000.00\n10/01/2023 || 2000.00 || || 2000.00\n")
   end
+  it 'only allows client to input a integer when creating an account' do
+    expect { Bank.new('test', '10-01-2023') }.to raise_error(RuntimeError)
+  end
+  it 'only allows client to input a positive integer when creating an account' do
+    expect { Bank.new(-1000, '10-01-2023') }.to raise_error(RuntimeError)
+  end
+  it 'only allows client to input a positive integer when making a deposit an account' do
+    client = Bank.new(2000, '10-01-2023')
+    expect { -1000 }.to raise_error(RuntimeError)
+  end
 end

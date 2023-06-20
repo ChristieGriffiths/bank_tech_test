@@ -2,10 +2,15 @@ require 'date'
 
 class Bank
   def initialize(initial_deposit, date)
+    deposit_checker(initial_deposit)
     @dates = {}
     @balance = 0.00
     add(initial_deposit, date)
   end
+
+  def deposit_checker(user_input)
+    raise 'Must be a positive integer' unless user_input.is_a?(Integer) && user_input.positive?
+  end 
 
   def to_two_decimal_places(number)
     format('%.2f', number)
@@ -32,7 +37,7 @@ class Bank
       deposit = data.keys.first
       balance = data.values.first
       if deposit.negative?
-        account += "#{date} || || #{to_two_decimal_places(-1 * deposit)} || #{to_two_decimal_places(balance)}\n"
+        account += "#{date} || || #{to_two_decimal_places(deposit * -1)} || #{to_two_decimal_places(balance)}\n"
       else
         account += "#{date} || #{to_two_decimal_places(deposit)} || || #{to_two_decimal_places(balance)}\n"
       end
@@ -40,3 +45,6 @@ class Bank
     account
   end
 end
+
+client = Bank.new(1000, '10-10-1000')
+client.statement
