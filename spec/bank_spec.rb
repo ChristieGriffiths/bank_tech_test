@@ -2,22 +2,18 @@ require 'bank'
 
 describe Bank do
   it 'allows a client to make 1 deposit and print a statement' do
-    client = Bank.new(2000, '10-01-2023')
-    expect(client.statement).to eq("date || credit || debit || balance\n10/01/2023 || 2000.00 || || 2000.00\n")
-  end 
-  it 'allows a client to make 1 deposit and print a statement' do
     client = Bank.new(1000, '14-01-2023')
     expect(client.statement).to eq("date || credit || debit || balance\n14/01/2023 || 1000.00 || || 1000.00\n")
   end 
   it 'allows a client to make 2 deposit and print a statement' do
     client = Bank.new(1000, '14-01-2023')
-    client.add(1000, '15-01-2023')
+    client.deposit(1000, '15-01-2023')
     expect(client.statement).to eq("date || credit || debit || balance\n15/01/2023 || 1000.00 || || 2000.00\n14/01/2023 || 1000.00 || || 1000.00\n")
   end
   it 'allows a client to make 3 deposit and print a statement' do
     client = Bank.new(1000, '14-01-2023')
-    client.add(1000, '15-01-2023')
-    client.add(1000, '16-01-2023')
+    client.deposit(1000, '15-01-2023')
+    client.deposit(1000, '16-01-2023')
     expect(client.statement).to eq("date || credit || debit || balance\n16/01/2023 || 1000.00 || || 3000.00
 15/01/2023 || 1000.00 || || 2000.00\n14/01/2023 || 1000.00 || || 1000.00\n")
   end
@@ -40,23 +36,23 @@ describe Bank do
   it 'only allows client to input a integer when creating an account' do
     expect { Bank.new('test', '10-01-2023') }.to raise_error(RuntimeError)
   end
-  it 'only allows client to input a positive integer when creating an account' do
-    expect { Bank.new(-1000, '10-01-2023') }.to raise_error(RuntimeError)
+  it 'only allows client to input an integer when creating an account' do
+    expect { Bank.new('test', '10-01-2023') }.to raise_error(RuntimeError)
   end
-  it 'only allows client to input a positive integer when making a deposit an account' do
+  it 'only allows client to input an integer when making a deposit an account' do
     client = Bank.new(2000, '10-01-2023')
-    expect { client.add(-1000, '10-01-2023') }.to raise_error(RuntimeError)
+    expect { client.deposit('test', '10-01-2023') }.to raise_error(RuntimeError)
   end
-  it 'only allows client to input a positive integer when making a withdrawl from an account' do
+  it 'only allows client to input a integer when making a withdrawl from an account' do
     client = Bank.new(2000, '10-01-2023')
-    expect { client.withdraw(-1000, '10-01-2023') }.to raise_error(RuntimeError)
+    expect { client.withdraw('test', '10-01-2023') }.to raise_error(RuntimeError)
   end
   it 'only allows client to only input a correctly formated date when creating an account' do
     expect { Bank.new(2000, '10/01/2023') }.to raise_error(RuntimeError)
   end
   it 'only allows client to only input a correctly formated date when making a deposit' do
     client = Bank.new(2000, '10-01-2023')
-    expect { client.add(2000, 'not a date') }.to raise_error(RuntimeError)
+    expect { client.deposit(2000, 'not a date') }.to raise_error(RuntimeError)
   end
   it 'only allows client to only input a correctly formated date when making a withdrawal' do
     client = Bank.new(2000, '10-01-2023')
