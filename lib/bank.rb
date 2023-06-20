@@ -3,6 +3,7 @@ require 'date'
 class Bank
   def initialize(initial_deposit, date)
     deposit_checker(initial_deposit)
+    date_checker(date)
     @dates = {}
     @balance = 0.00
     add(initial_deposit, date)
@@ -12,13 +13,19 @@ class Bank
     raise 'Must be a positive integer' unless user_input.is_a?(Integer) && user_input.positive?
   end 
 
-  def to_two_decimal_places(number)
-    format('%.2f', number)
+  def date_checker(user_input)
+    pattern_checker = /^\d{2}-\d{2}-\d{4}$/
+    raise 'date must be inputted in this specific format dd-mm-yyyy' unless user_input.match(pattern_checker)
   end
 
   def date_formater(date)
     date.gsub('-', '/')
   end 
+
+  def to_two_decimal_places(number)
+    format('%.2f', number)
+  end
+
 
   def add(deposit, date)
     deposit_checker(deposit)

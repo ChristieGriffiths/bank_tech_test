@@ -51,4 +51,7 @@ describe Bank do
     client = Bank.new(2000, '10-01-2023')
     expect { client.withdraw(-1000, '10-01-2023') }.to raise_error(RuntimeError)
   end
+  it 'only allows client to input a correctly formated date when creating an account' do
+    expect { Bank.new(2000, '10/01/2023') }.to raise_error(RuntimeError)
+  end
 end
