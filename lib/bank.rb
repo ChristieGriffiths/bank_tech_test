@@ -57,6 +57,3 @@ class Bank
     account
   end
 end
-
-client = Bank.new(1000, '10-10-1000')
-client.statement
