@@ -14,31 +14,34 @@ class Bank
   end 
 
   def date_checker(user_input)
+    raise 'Input must be a string.' unless user_input.is_a?(String)
+
     pattern_checker = /^\d{2}-\d{2}-\d{4}$/
     raise 'date must be inputted in this specific format dd-mm-yyyy' unless user_input.match(pattern_checker)
   end
 
   def date_formater(date)
     date.gsub('-', '/')
-  end 
+  end
 
   def to_two_decimal_places(number)
     format('%.2f', number)
   end
 
-
   def add(deposit, date)
     deposit_checker(deposit)
+    date_checker(date)
     @balance += deposit
     @dates[date_formater(date)] = {deposit => @balance}
   end
 
   def withdraw(amount, date)
     deposit_checker(amount)
+    date_checker(date)
     @balance -= amount
     @dates[date_formater(date)] = {-amount => @balance}
-  end 
-  
+  end
+
   def statement
     @dates = @dates.sort_by { |day, _| DateTime.parse(day, '%d/%m/%Y') }.reverse.to_h
     account = "date || credit || debit || balance\n"
