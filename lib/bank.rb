@@ -2,16 +2,23 @@ require 'date'
 
 class Bank
   def initialize(initial_deposit, date)
+    validate_amount(initial_deposit)
     @transaction_history = TransactionHistory.new
     @transaction_history.add(initial_deposit, date)
   end
 
   def deposit(amount, date)
+    validate_amount(amount)
     @transaction_history.add(amount, date)
   end
 
   def withdraw(amount, date)
+    validate_amount(amount)
     @transaction_history.add(-amount, date)
+  end
+
+  def validate_amount(amount)
+    raise 'Amount must be an integer' unless amount.is_a?(Integer) && amount.positive?
   end
 
   def statement
@@ -26,9 +33,7 @@ class TransactionHistory
   end
 
   def add(amount, date)
-    validate_amount(amount)
     validate_date(date)
-
     @balance += amount
     @dates[date_formatter(date)] = { amount => @balance }
   end
@@ -52,10 +57,6 @@ class TransactionHistory
   end
 
   private
-
-  def validate_amount(amount)
-    raise 'Amount must be a positive integer' unless amount.is_a?(Integer)
-  end
 
   def validate_date(date)
     raise 'Date must be a string' unless date.is_a?(String)
