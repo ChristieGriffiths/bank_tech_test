@@ -87,10 +87,11 @@ rspec bank_spec.rb
 ```
 The test cases cover various scenarios, including making deposits, withdrawals, and verifying the statement output.
 
-## Notes
+## Approach
+
+I took the approach of TDD and creating the simplest possible test first and then incrementally increasing the complexity of them.  I finished my test with edge cases.
 
 I've allowed the user to enter into debt as there was in the specifications there was no mention of not allowing them to. 
-
 
 ## Contributing
 

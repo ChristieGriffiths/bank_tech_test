@@ -11,7 +11,7 @@ class Bank
 
   def deposit_checker(user_input)
     raise 'Must be a positive integer' unless user_input.is_a?(Integer) && user_input.positive?
-  end 
+  end
 
   def date_checker(user_input)
     raise 'Input must be a string.' unless user_input.is_a?(String)
@@ -32,14 +32,14 @@ class Bank
     deposit_checker(deposit)
     date_checker(date)
     @balance += deposit
-    @dates[date_formater(date)] = {deposit => @balance}
+    @dates[date_formater(date)] = { deposit => @balance }
   end
 
   def withdraw(amount, date)
     deposit_checker(amount)
     date_checker(date)
     @balance -= amount
-    @dates[date_formater(date)] = {-amount => @balance}
+    @dates[date_formater(date)] = { -amount => @balance }
   end
 
   def statement
