@@ -89,7 +89,9 @@ The test cases cover various scenarios, including making deposits, withdrawals, 
 
 ## Approach
 
-I took the approach of TDD and creating the simplest possible test first and then incrementally increasing the complexity of them.  I finished my test with edge cases.
+I took the approach of planning on excalidraw and then of a TDD approach bycreating the simplest possible test first and then incrementally increasing the complexity of them.  I finished my test with edge cases.
+
+After reviewing my code, I realised I should of made 2 classes rather than only 1. So, I did just that. And then fixed my tests to accomdate for the changes. Not ideal but necessary. 
 
 I've allowed the user to enter into debt as there was in the specifications there was no mention of not allowing them to. 
 
