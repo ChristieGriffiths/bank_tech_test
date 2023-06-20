@@ -89,7 +89,7 @@ The test cases cover various scenarios, including making deposits, withdrawals, 
 
 ## Notes
 
-I've allowed the user to into debt as there was in the specifications there was no mention of not allowing them to. 
+I've allowed the user to enter into debt as there was in the specifications there was no mention of not allowing them to. 
 
 
 ## Contributing
