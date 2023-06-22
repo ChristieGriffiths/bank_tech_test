@@ -73,3 +73,5 @@ class TransactionHistory
     format('%.2f', number)
   end
 end
+
+# laptop set up
