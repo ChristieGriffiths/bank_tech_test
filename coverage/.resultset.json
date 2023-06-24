@@ -1,7 +1,7 @@
 {
   "RSpec": {
     "coverage": {
-      "/Users/christiegriffiths/Desktop/proyectos/bank_tech_test/spec/bank_spec.rb": {
+      "/Users/christiegriffiths/Desktop/Projects/bank_tech_test/spec/bank_spec.rb": {
         "lines": [
           1,
           null,
@@ -66,8 +66,9 @@
           null
         ]
       },
-      "/Users/christiegriffiths/Desktop/proyectos/bank_tech_test/lib/bank.rb": {
+      "/Users/christiegriffiths/Desktop/Projects/bank_tech_test/lib/bank.rb": {
         "lines": [
+          1,
           1,
           null,
           1,
@@ -96,6 +97,58 @@
           null,
           null,
           null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "/Users/christiegriffiths/Desktop/Projects/bank_tech_test/lib/transaction_history.rb": {
+        "lines": [
           1,
           1,
           11,
@@ -146,6 +199,6 @@
         ]
       }
     },
-    "timestamp": 1687265567
+    "timestamp": 1687604314
   }
 }
